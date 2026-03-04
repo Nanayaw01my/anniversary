@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>💗 our love · card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fba0bb 0%, #ffc2d0 100%);
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        /* modern glass card for celebration */
+        .celebration-card {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(255, 235, 240, 0.25);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 64px;
+            box-shadow: 0 30px 50px rgba(190, 60, 90, 0.3), inset 0 2px 8px rgba(255,255,255,0.8);
+            padding: 32px 20px 36px;
+            color: white;
+            animation: fadeScale 0.6s cubic-bezier(0.12, 0.71, 0.33, 1);
+        }
+
+        @keyframes fadeScale {
+            0% { opacity: 0; transform: scale(0.96); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* balloon row – fun & floaty */
+        .balloon-row {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-size: 4rem;
+            filter: drop-shadow(0 12px 10px #b15474);
+            margin: 10px 0 18px;
+        }
+
+        .balloon-row span {
+            animation: floatPop 2s infinite alternate ease-in-out;
+            transform-origin: bottom;
+            display: inline-block;
+        }
+
+        @keyframes floatPop {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            100% { transform: translateY(-18px) rotate(4deg); }
+        }
+
+        /* pop / burst message */
+        .burst-message {
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 100px;
+            display: inline-block;
+            margin: 10px 0 12px;
+            backdrop-filter: blur(8px);
+            border: 2px solid white;
+            box-shadow: 0 6px 0 #b0727e;
+            letter-spacing: 1px;
+        }
+
+        .confetti-line {
+            font-size: 2.8rem;
+            letter-spacing: 14px;
+            filter: drop-shadow(0 6px 6px #d46b86);
+            margin: 12px 0 20px;
+        }
+
+        /* love card – elegant and heartfelt */
+        .love-card {
+            background: rgba(255, 215, 225, 0.3);
+            backdrop-filter: blur(16px);
+            border: 3px solid white;
+            border-radius: 56px 16px 56px 16px;
+            padding: 30px 22px;
+            margin: 24px 0 18px;
+            box-shadow: 0 20px 0 #b27c8b, 0 30px 40px -8px rgba(140,40,70,0.4);
+            color: white;
+            text-align: left;
+        }
+
+        .love-card h2 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            text-align: center;
+            border-bottom: 2px dashed rgba(255,255,255,0.9);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .message-block {
+            background: rgba(255,255,255,0.12);
+            border-radius: 42px 10px 42px 10px;
+            padding: 18px 18px;
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .love-card p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin: 18px 0;
+            font-weight: 400;
+        }
+
+        .signature-area {
+            font-style: italic;
+            text-align: right;
+            font-size: 1.7rem;
+            border-top: 1px solid rgba(255,255,255,0.7);
+            padding-top: 20px;
+            margin-top: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tiny-footer {
+            font-size: 1.1rem;
+            text-align: center;
+            opacity: 0.9;
+            margin: 20px 0 10px;
+            background: rgba(255,255,255,0.15);
+            padding: 12px 18px;
+            border-radius: 80px;
+            border: 1px solid white;
+        }
+
+        /* back to box button */
+        .back-button {
+            color: white;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            cursor: pointer;
+            opacity: 0.9;
+            transition: 0.2s;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 28px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1.5px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .back-button:active {
+            background: rgba(255,255,255,0.3);
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body>
+    <div class="celebration-card">
+        <!-- balloons (burst style) -->
+        <div class="balloon-row">
+            <span>🎈</span><span>🎈</span><span>🎈</span><span>🎈</span><span>🎈</span>
+        </div>
+
+        <!-- pop & confetti -->
+        <div class="burst-message">💥 POP! 💥</div>
+        <div class="confetti-line">✨🎊💖🎉</div>
+
+        <!-- MAIN LOVE CARD (all the heartfelt messages) -->
+        <div class="love-card">
+            <h2>💗 to my love</h2>
+            
+            <div class="message-block">
+                <p>
+                    365 days of us — and my heart still skips when you message me. 
+                    every photo, every laugh, every silly moment with you is 
+                    a treasure I’ll hold forever. you’ve made my world softer, 
+                    brighter, and full of joy.
+                </p>
+                <p>
+                    i love your morning voice, the way you steal the covers, 
+                    how you always know when i need a hug. you're my favorite 
+                    notification, my comfort place, and the best part of every day.
+                </p>
+                <p>
+                    thank you for 15 months of memories, for holding my hand 
+                    through everything, and for being exactly who you are.
+                </p>
+            </div>
+
+            <div class="signature-area">
+                <span>❤️</span>
+                <span>always yours, <br><strong>your love</strong></span>
+            </div>
+        </div>
+
+        <div class="tiny-footer">happy 1 year anniversary baby 💕</div>
+
+        <!-- button to go back to the main box (index) -->
+        <div class="back-button" id="backToBoxBtn">↺ back to our box</div>
+    </div>
+
+    <script>
+        (function() {
+            // back button: return to main page (index.html)
+            const backBtn = document.getElementById('backToBoxBtn');
+            backBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // redirect back to the main page (assumed to be index.html or the box page)
+                window.location.href = 'index.html'; 
+                // if your main file has a different name, change it accordingly
+                // (e.g., 'main.html' or 'box.html')
+            });
+
+            // optional: personalize signature (change "your love" to a pet name)
+            const signatureStrong = document.querySelector('.signature-area strong');
+            if (signatureStrong) {
+                // you can replace with a nickname, e.g., "your boyfriend"
+                // signatureStrong.innerText = 'your boyfriend';  // <-- uncomment and customize
+            }
+
+            // add an extra floating delay variation to balloons
+            const balloons = document.querySelectorAll('.balloon-row span');
+            balloons.forEach((balloon, index) => {
+                const delay = index * 0.2;
+                balloon.style.animationDelay = `${delay}s`;
+            });
+        })();
+    </script>
+</body>
+</html>

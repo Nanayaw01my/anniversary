@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>💗 1 year · open the box</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fba0bb 0%, #ffc2d0 100%);
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        /* modern glassmorphism card */
+        .anniversary-card {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 235, 240, 0.25);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 56px;
+            box-shadow: 0 30px 50px rgba(190, 60, 90, 0.25), inset 0 2px 6px rgba(255,255,255,0.8);
+            padding: 28px 18px 32px;
+            color: white;
+            transition: all 0.2s;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 2.4rem;
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 10px rgba(180, 60, 80, 0.4);
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .subhead {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 400;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 18px;
+            border-radius: 80px;
+            display: inline-block;
+            margin-bottom: 18px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* 15 pictures – modern minimal grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 24px 0 18px;
+        }
+
+        .photo-item {
+            aspect-ratio: 1 / 1;
+            border-radius: 22px 6px 22px 6px;
+            border: 2.5px solid white;
+            overflow: hidden;
+            background: #ffb8c9;
+            box-shadow: 0 8px 0 rgba(150, 60, 80, 0.4), 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.15s;
+            cursor: pointer;
+        }
+
+        .photo-item:active {
+            transform: scale(0.97);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #ffb0c0;
+        }
+
+        .photo-item span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: 2rem;
+            color: white;
+            background: #ffb0c0;
+        }
+
+        /* modern box – floating neomorphism */
+        .gift-section {
+            margin: 24px 0 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .magic-box {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 3px solid white;
+            border-radius: 48px;
+            padding: 16px 30px;
+            box-shadow: 0 20px 30px -6px rgba(170, 70, 90, 0.5), 0 8px 0 #b88797, 0 0 0 2px rgba(255,255,255,0.5) inset;
+            cursor: pointer;
+            transition: all 0.15s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            width: fit-content;
+            min-width: 220px;
+        }
+
+        .magic-box:active {
+            transform: translateY(8px);
+            box-shadow: 0 10px 20px -6px rgba(170, 70, 90, 0.5), 0 2px 0 #b0727e, 0 0 0 2px rgba(255,255,255,0.5) inset;
+        }
+
+        .box-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .box-icon {
+            font-size: 4.8rem;
+            filter: drop-shadow(0 10px 6px #c06b81);
+            transition: 0.2s;
+        }
+
+        .box-label {
+            background: white;
+            color: #f28ba8;
+            font-weight: 700;
+            font-size: 1.5rem;
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 2px solid white;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 0 #c48b9b;
+        }
+
+        .hint-modern {
+            font-size: 1rem;
+            margin-top: 10px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 18px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .reset-modern {
+            color: white;
+            font-size: 1rem;
+            margin-top: 24px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
+            opacity: 0.85;
+            transition: 0.2s;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 22px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .reset-modern:active { opacity: 1; background: rgba(255,255,255,0.3); }
+
+        /* redirect note - HIDDEN (kept in DOM but invisible) */
+        .redirect-note {
+            display: none;
+        }
+
+        /* ---------- FULLSCREEN IMAGE VIEWER (LIGHTBOX) ---------- */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 30px;
+            border: 4px solid white;
+            background: #ffb8c9;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .lightbox-counter {
+            color: white;
+            font-size: 1.2rem;
+            margin: 18px 0 12px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 22px;
+            border-radius: 60px;
+            border: 1px solid white;
+        }
+
+        .lightbox-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            margin: 12px 0;
+        }
+
+        .lightbox-nav-btn {
+            background: rgba(255,255,255,0.25);
+            border: 2px solid white;
+            color: white;
+            font-size: 2.5rem;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.15s;
+            backdrop-filter: blur(6px);
+            user-select: none;
+        }
+
+        .lightbox-nav-btn:active {
+            background: rgba(255,255,255,0.5);
+            transform: scale(0.92);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: rgba(255,255,255,0.25);
+            border: 2px solid white;
+            color: white;
+            font-size: 2.2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.15s;
+            backdrop-filter: blur(6px);
+            z-index: 10;
+        }
+
+        .lightbox-close:active {
+            background: rgba(255,255,255,0.5);
+            transform: scale(0.92);
+        }
+    </style>
+</head>
+<body>
+    <div class="anniversary-card">
+        <h1>✨ one year ✨</h1>
+        <div class="subhead">forever us</div>
+ 
+        <!-- 15 PHOTO GRID (click any image to open viewer) -->
+        <div class="photo-grid" id="photoGrid"></div>
+
+        <!-- GIFT BOX SECTION -->
+        <div class="gift-section">
+            <div class="magic-box" id="magicBox">
+                <div class="box-content" id="boxCover">
+                    <span class="box-icon">🎁</span>
+                    <span class="box-label">open me</span>
+                </div>
+            </div>
+            <div class="hint-modern">(tap to open your card)</div>
+        </div> 
+        
+        <!-- Redirect note - hidden with CSS (kept for functionality but invisible) -->
+        <div class="redirect-note" id="redirectNote">
+            after opening, you'll be linked to your personal card
+        </div>
+
+        <!-- reset button (goes back to main box) -->
+        <div class="reset-modern" id="resetBtn">↺ back to box</div>
+    </div>
+
+    <!-- FULLSCREEN LIGHTBOX (hidden by default) -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <div class="lightbox-content">
+            <div class="lightbox-close" id="lightboxClose">✕</div>
+            <img class="lightbox-image" id="lightboxImg" src="" alt="our memory">
+            <div class="lightbox-counter" id="lightboxCounter">1/15</div>
+            <div class="lightbox-nav">
+                <div class="lightbox-nav-btn" id="lightboxPrev">←</div>
+                <div class="lightbox-nav-btn" id="lightboxNext">→</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // --------------------------------------------------------------
+            //  *** YOUR FACEBOOK IMAGE LINKS (paste them below) ***
+            // --------------------------------------------------------------
+            const facebookImageLinks = [
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/646280764_812196738586517_4740830584032149045_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGOlpWP4msXYdmNzxIg04FjUFnkhJ8CXHRQWeSEnwJcdMfR2qDSCzv9dms1BlsCd9ZKNd1oIpjIN-oWY7maFPwS&_nc_ohc=ONLKonxZGZoQ7kNvwHBH_Pl&_nc_oc=AdkQWCCg4QYosew7P1w-qDDUBZXzol4T_SOc_DbnfbHjd467rWHerVXU3eTyDqJdKdY&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=kdUGD4RtN6TPSYgZstSl-Q&_nc_ss=8&oh=00_Afw2OhxWLY1QaVq6V0OtVKoYUoXwWhpDeFdOANVUFs48ZQ&oe=69AE5EE5",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/646336526_812196791919845_1988147994290847625_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeE16yyjrO0FuH-fuPIgflRpGLuCrmBy7xMYu4KuYHLvE6gGFlXPVK3itnTnkqtv1q3Sor-4Xg82qqCzGwd5nBCb&_nc_ohc=1WqWG9hLqmEQ7kNvwEwt0Mf&_nc_oc=AdnQUTGpxwlpMg98n0bnH5NQZgBblXvsWTyCh9BYbzqKziXLCoWfXdrJUOOkMY3QFws&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=kdUGD4RtN6TPSYgZstSl-Q&_nc_ss=8&oh=00_AfxH5qodpDy1QToSsYequog0JqyWcbko7Ri2B0c_VFiGCw&oe=69AE715E",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/647618000_812196965253161_2489963468201305920_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeH3hKBVK-C1RpmQlr74AoGg27iROIKWWR7buJE4gpZZHhCpF7SI27YyjQo4QbIY0-tOzhEEPTUJxkz3cH5_vLTV&_nc_ohc=FAKcKN0do2UQ7kNvwEyXOgk&_nc_oc=AdkJ6oPHFLVsN5yfDNR9A0AtJlilgtU5keNCh3PObpIfgy8OjxDrBYIyqSYXAlXeFxY&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=kdUGD4RtN6TPSYgZstSl-Q&_nc_ss=8&oh=00_Afz2vYleZhlD7WyEFWJB_YJ99w6EEwKOBF_DAh5HmW-46g&oe=69AE8E0F",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/646795274_812196785253179_1106179637967408943_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHK-tZbjYc9nFiZPvkM_siDZm383lTPnTpmbfzeVM-dOr2TXTcP9OIk33ipCCE9DUoCs4vsy_9XhckDBFf2hQ7i&_nc_ohc=50pL-3p7IjAQ7kNvwE9ONN2&_nc_oc=AdlGCRJMEAISDOi_lcnEpeGBiS5szOMonZ5y90PdCPN5EY_Z15Lv4IZWr0rAaOcA0k0&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=kdUGD4RtN6TPSYgZstSl-Q&_nc_ss=8&oh=00_AfynEr44OsY2lWsG_YCtky5n5vchqO-uBiMc6tTTBkOX0w&oe=69AE769E",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/645386106_812197008586490_4519404608955547172_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGnto_zuiKUv_xLx5qO44Pf1DGoah7bpsLUMahqHtumwl0etrzNC3IaYTk5BnHtfL7JbCt77lR7wvSvfG93MW9E&_nc_ohc=ehWyXWrQxRIQ7kNvwFuW8Y6&_nc_oc=AdlPPWRn9vGm1E00tmRkjvnmsSySVI_XDp3iX46z0Iucgaa1XNkh16DrSO0WvTEGOeM&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=IOkc-rqXSZgUKuVRCXxsaQ&_nc_ss=8&oh=00_AfwCge9AFufc-Xbpo1Hpy3kaJN8BU_g8GCijQuomtOP7Hg&oe=69AE7B34",
+                "https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/647030970_812196881919836_3326948977565254523_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeFzDPg1GteZewOKv9uIGs-TVRCghuzXUwJVEKCG7NdTAr_UumPXeIar-8sFekPI-S3mdYheCxv9z5viba7RJkvU&_nc_ohc=jc6_9D6wp6QQ7kNvwFc4iUa&_nc_oc=AdmVivu_dsvUtpnKJ3x7GfYPSdTPEhiOyGs8XWwqfoe3TE3Ob0BTBZLbwqVVN7tGAHo&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=r4qM8T0G7p-EUX0RbOGomg&_nc_ss=8&oh=00_AfzEXquxtplHHMgf88MMwFYmXw0wys5CmHSGgvgKDn0JsQ&oe=69AE83A2",
+                "https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/647053297_812196975253160_5440093055155686560_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGAXCJQEI1tTyt9HvMAHOLJIc8XvRh_j-khzxe9GH-P6b6nVtGhiaCv-1-a9OjimeeflcDw7ckqOeur5UOpKrFi&_nc_ohc=haNHiiVMR9kQ7kNvwFh_upA&_nc_oc=Admu-Q29PiqMaUq6hI70A4hrovQzGaZZDuFVtyMbBTTGDGia_v9m42_Zou9nkFUoBU4&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=vCqDCrXzSiCyiAwyFrMk-Q&_nc_ss=8&oh=00_Afzk288oIo_jwWeitp5IJFiqci0Xup9Be7sYGUDMaYrQVg&oe=69AE85B5",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/645678749_812196915253166_5658040775787444681_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeFIJmlctJ3URtuOG1EPVK93KSc08NaY1JUpJzTw1pjUlTSWdgcb-W9o2g67VGjD01PrB2vlk8eXfdZjUZI7au2E&_nc_ohc=_s5c0mNxXpsQ7kNvwFa9GDb&_nc_oc=AdkIHmyCy1CYfUAHA7Me2Z8NHQnrxA0S2NE6HQ3SqWBpcStbcJvbffwUQeSa1dFkMcE&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=ZMPsNHR8L6kxhSHtMtzlcQ&_nc_ss=8&oh=00_AfxLzgYIGuUEIIDX2Cv6kox_U5E0KA_waZFhLWMoG-8lxw&oe=69AE7772",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/646880366_812196921919832_8164684969715588624_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGnrVHZw5an1Tm8TVMPST99vqVLXhbu1PG-pUteFu7U8dmXyXtLc9zJ2O_IvmQaOmyFTP5Ce32-bZyQpOv3R5_K&_nc_ohc=LfU_fFGGN4oQ7kNvwHbO7LQ&_nc_oc=AdlnEEQrcAAvRGmKuZkV_Vh8QgsOaBnZXlgYEeVsqLdXN5JZvjwEwe9uhFF1sEN_IoQ&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=K6aJotcVA71HGWnNMqYrkQ&_nc_ss=8&oh=00_Afx9z1pzU-W5n-Ne0qRzpoqNehrcPoKwsnRiwgcT5SV-Pw&oe=69AE85F0",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/647047752_812196835253174_7991306748380382870_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeF7rv1p3V5hvEFRSjxUsp7gdZWD1vFDUO11lYPW8UNQ7bVD_WbiyVcteYv0QYf9220XFB8aTHzMFBezEEl8kBxq&_nc_ohc=HBhxZk7jnocQ7kNvwFY2YPI&_nc_oc=Adlzl1QZhdEFCrrzBoNWxJtVl_xxvFGb5CrKMIGIwpp6bbrzbOdgpq3NcyGUnEXQ4c0&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=tpqSxVehi6_J7dKE0Ll_RA&_nc_ss=8&oh=00_Afx9GjpyhF6ltM3BUv4JKMsNcCXvLXf1FZoFxYbN3fH8fA&oe=69AE6078",
+                "https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/647028211_812196728586518_114404928045977000_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeFvv8Erfvu7RqZnn_O_0YNPNLAo6WGAwyc0sCjpYYDDJ7TCw99GZWfvIkrwvEJIUUs0Ha8HIPLfM2K40v4PgldT&_nc_ohc=58vwUWnwmAoQ7kNvwGV9KRy&_nc_oc=AdkQgyxC8hBLXgCl1Mtcx1Vy3Ws87hR_doBzbJMnIisQlkTFKGVHt3VI-BPSfRSTqwI&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=UmGLoWIfcdE699Giyrh87Q&_nc_ss=8&oh=00_AfxBLCJIm2vnyyomaIXNiXefTFk5APHFU_kJ1tl-SxNKAQ&oe=69AE6643",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/646992010_812196845253173_8056043285810853203_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGQy6_0CPkRHRdpdUKj1NRe7WlwEiGSji3taXASIZKOLVqcAEsP00Zog5a2ZU4lleC07cJndTrViLyiV7KpQWNy&_nc_ohc=DIkSXsF3KMsQ7kNvwG-fzfh&_nc_oc=AdliGroA2tZX2AQV3UMWqwdeVaCqI0JmfvTFVLKwgT6RYz68AUBFiA127dSexBPZOtE&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=oQ0kQWYOtNznKe7NUVdZcw&_nc_ss=8&oh=00_AfyODSD_cJJMkjrk-ZFWzVKUSldJ98L7VDaOb4iUGVwwHA&oe=69AE82CF",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/647052627_812197051919819_3618060519042856050_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHZRmHl55agRT5cuOFrn8hVcsRszKJuRaVyxGzMom5FpX--ujAZfmTcLtAq1-UXQEbTt8SI0G0S5ZYNpvMYeDhM&_nc_ohc=zQ6owtabHogQ7kNvwFlevMr&_nc_oc=AdmLV7NxTyc4nwN-GoRcBDt4E-5foeiERiuJ2e7feshxL5UQD1uFNqnIKxZi0VI-OTo&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=P7MiLWxPrrjhKJ6BWGd89A&_nc_ss=8&oh=00_AfzuVTGMPjqYHiq4FOF_heEeLYHioo9B1vt_f064BzWLvQ&oe=69AE85CF",
+                "https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/646986871_812197011919823_7794490445202197596_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHJVfBt4QNwkl2CZwqOjsiNppcTWAA8sHamlxNYADywdo8sIUn3Uif5N5l5qM8xh2W4A1Nwifuhy1NaBNQItA3d&_nc_ohc=ps3TwVhpfFwQ7kNvwG9VAVp&_nc_oc=AdnrUr4mibjyLukDz8DspKv90VzU9TLVZerZyyjZ3wgAI9tegbm122S844v85xyIvI0&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=0dNBl28S3-59qbK3fTOijQ&_nc_ss=8&oh=00_AfwL4uDS151eiuFhz3ItnkK4VqLDYcptxLcHrBR9k5amFQ&oe=69AE7B22",
+                "https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/645697588_812196888586502_706496825967918672_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHSTu0F8rDHu5K26G4cLRI7mht_Zla2eOGaG39mVrZ44SEEG_TgQ9I-ZOiY_b407182FoQHgba0JGmZDDB6RKZT&_nc_ohc=0e4bkiR-2OAQ7kNvwGyh3qm&_nc_oc=Adm7n6P9M_hd3-kbd5_VOV9F_7b53v2-2_ARmtiHU6VqfcUci4lw8l_Bv36Q1Du-3ao&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=VxIJQIhQGfR8UDoT7DeVFQ&_nc_ss=8&oh=00_AfwQ9LVxFUL4qjWFCdITriNqsu9QLwSfh4-0Gi3DBjZQ_Q&oe=69AE7C87"
+            ];
+
+            // Store image elements and their sources for lightbox
+            const imageSources = [...facebookImageLinks]; // copy array
+            const photoItems = [];
+
+            // render 15 images and attach click for lightbox
+            const grid = document.getElementById('photoGrid');
+            for (let i = 0; i < 15; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'photo-item';
+                const img = document.createElement('img');
+                img.src = facebookImageLinks[i] || "https://via.placeholder.com/200/ffb6c1/ffffff?text=💗";
+                img.alt = 'our memory';
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    const span = document.createElement('span');
+                    span.textContent = '💕';
+                    cell.appendChild(span);
+                };
+                cell.appendChild(img);
+                grid.appendChild(cell);
+                
+                // store reference
+                photoItems.push(cell);
+                
+                // add click event to open lightbox at this image
+                cell.addEventListener('click', (function(index) {
+                    return function(e) {
+                        e.stopPropagation();
+                        openLightbox(index);
+                    };
+                })(i));
+            }
+
+            // --------------------------------------------------------------
+            // LIGHTBOX FUNCTIONALITY
+            // --------------------------------------------------------------
+            const overlay = document.getElementById('lightboxOverlay');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const counter = document.getElementById('lightboxCounter');
+            const prevBtn = document.getElementById('lightboxPrev');
+            const nextBtn = document.getElementById('lightboxNext');
+            const closeBtn = document.getElementById('lightboxClose');
+
+            let currentIndex = 0;
+
+            function openLightbox(index) {
+                currentIndex = index;
+                updateLightbox();
+                overlay.style.display = 'flex';
+            }
+
+            function closeLightbox() {
+                overlay.style.display = 'none';
+            }
+
+            function updateLightbox() {
+                if (imageSources[currentIndex]) {
+                    lightboxImg.src = imageSources[currentIndex];
+                } else {
+                    lightboxImg.src = "https://via.placeholder.com/500/ffb6c1/ffffff?text=💕";
+                }
+                counter.textContent = `${currentIndex+1} / ${imageSources.length}`;
+            }
+
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % imageSources.length;
+                updateLightbox();
+            }
+
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
+                updateLightbox();
+            }
+
+            // event listeners
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                prevImage();
+            });
+
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nextImage();
+            });
+
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeLightbox();
+            });
+
+            overlay.addEventListener('click', function(e) {
+                // close if clicking outside the content
+                if (e.target === overlay) {
+                    closeLightbox();
+                }
+            });
+
+            // swipe/touch navigation optional: left/right arrows key
+            document.addEventListener('keydown', function(e) {
+                if (overlay.style.display === 'flex') {
+                    if (e.key === 'ArrowRight') {
+                        nextImage();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevImage();
+                    } else if (e.key === 'Escape') {
+                        closeLightbox();
+                    }
+                }
+            });
+
+            // --------------------------------------------------------------
+            // BOX TAP -> REDIRECT TO CARD.HTML
+            // --------------------------------------------------------------
+            const magicBox = document.getElementById('magicBox');
+            const resetBtn = document.getElementById('resetBtn');
+            const redirectNote = document.getElementById('redirectNote');
+
+            magicBox.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.location.href = 'card.html';
+            });
+
+            resetBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                window.location.href = window.location.pathname; // reloads this page
+            });
+
+            // Redirect note is hidden with CSS, but we keep its text update for functionality
+            if (redirectNote) {
+                redirectNote.innerHTML = '⭐ tap the box → opens <strong>card.html</strong> (your love message)';
+            }
+        })();
+    </script>
+</body>
+</html>
