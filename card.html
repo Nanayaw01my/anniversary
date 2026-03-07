@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>fresh love · note</title>
+    <title>love note · big & text only</title>
     <style>
         * {
             margin: 0;
@@ -19,193 +19,166 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 16px;
         }
 
-        /* smoother, lighter glass card */
-        .modern-note {
+        /* much bigger card with generous padding */
+        .big-text-card {
             width: 100%;
-            max-width: 460px;
+            max-width: 680px;        /* wider */
             background: rgba(255, 245, 245, 0.2);
-            backdrop-filter: blur(18px) saturate(180%);
-            -webkit-backdrop-filter: blur(18px) saturate(180%);
-            border: 2px solid rgba(255, 255, 255, 0.7);
-            border-radius: 48px 16px 48px 16px;
-            box-shadow: 0 35px 55px -10px rgba(180, 60, 100, 0.4), inset 0 1px 12px rgba(255, 255, 255, 0.9);
-            padding: 30px 22px 34px;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            border-radius: 56px 20px 56px 20px;
+            box-shadow: 0 40px 60px -12px rgba(160, 50, 80, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.9);
+            padding: 48px 40px;       /* spacious interior */
             color: #2d1f22;
-            animation: appear 0.5s cubic-bezier(0.15, 0.8, 0.3, 1.05);
-            transition: box-shadow 0.2s;
+            animation: appear 0.5s ease-out;
         }
 
         @keyframes appear {
-            0% { opacity: 0; transform: translateY(14px) scale(0.98); }
+            0% { opacity: 0; transform: translateY(18px) scale(0.97); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* minimalist floating icons */
-        .icon-floating {
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            font-size: 3.8rem;
-            filter: drop-shadow(0 6px 12px #d97997);
-            margin: 4px 0 8px;
-            opacity: 0.9;
-        }
-
-        .icon-floating span {
-            display: inline-block;
-            animation: bob 2.2s infinite alternate ease-in-out;
-            transform-origin: center;
-        }
-
-        @keyframes bob {
-            0% { transform: translateY(0px) rotate(-3deg); }
-            100% { transform: translateY(-14px) rotate(3deg); }
-        }
-
+        /* text elements only – no emoji decorations */
         .soft-tag {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(4px);
             border-radius: 60px;
-            padding: 10px 28px;
+            padding: 14px 32px;
             width: fit-content;
-            margin: 10px auto 16px;
-            font-weight: 520;
-            font-size: 1.4rem;
+            margin: 0 auto 24px auto;  /* centered */
+            font-weight: 540;
+            font-size: 1.6rem;
             color: #3d1e2c;
             border: 1.8px solid white;
             box-shadow: 0 3px 0 #b38694;
-            letter-spacing: 0.3px;
-        }
-
-        .sparkle-strip {
-            font-size: 2.5rem;
-            letter-spacing: 20px;
+            letter-spacing: 0.5px;
             text-align: center;
-            filter: drop-shadow(0 4px 8px #d46b86);
-            margin: 8px 0 18px;
-            opacity: 0.9;
         }
 
-        /* main heart-note – clean, layered, modern */
+        /* simple text separator */
+        .sparkle-strip {
+            font-size: 2rem;
+            letter-spacing: 14px;
+            text-align: center;
+            color: #d46b86;
+            font-weight: 300;
+            margin: 12px 0 32px 0;
+            opacity: 0.8;
+        }
+
+        /* main love card – larger and cleaner */
         .fresh-love-card {
-            background: rgba(253, 240, 243, 0.55);
+            background: rgba(253, 240, 243, 0.6);
             backdrop-filter: blur(14px);
             border: 2px solid rgba(255, 255, 255, 0.9);
-            border-radius: 40px 8px 40px 8px;
-            padding: 28px 22px;
-            margin: 22px 0 12px;
-            box-shadow: 0 20px 0 #b27c8b, 0 25px 30px -12px #ac6279;
+            border-radius: 48px 12px 48px 12px;
+            padding: 36px 32px;
+            margin: 24px 0 20px;
+            box-shadow: 0 20px 0 #b27c8b, 0 30px 40px -16px #ac6279;
             color: #1f1218;
         }
 
         .fresh-love-card h2 {
-            font-size: 2.2rem;
-            font-weight: 620;
-            letter-spacing: -0.3px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
+            font-size: 2.8rem;        /* larger heading */
+            font-weight: 630;
+            letter-spacing: -0.5px;
             border-bottom: 2px dashed rgba(120, 50, 70, 0.3);
-            padding-bottom: 18px;
-            margin-bottom: 20px;
+            padding-bottom: 22px;
+            margin-bottom: 26px;
+            text-align: center;        /* centered text only */
         }
 
-        .fresh-love-card h2 span {
-            font-size: 2rem;
-            background: rgba(255,255,240,0.6);
-            border-radius: 40px;
-            padding: 0 6px;
-        }
-
+        /* message block with bigger text */
         .refreshed-message {
             background: rgba(255, 245, 245, 0.5);
-            border-radius: 32px 6px 32px 6px;
-            padding: 20px 20px;
-            margin: 22px 0;
+            border-radius: 40px 8px 40px 8px;
+            padding: 28px 26px;
+            margin: 26px 0;
             border: 1px solid rgba(255,255,255,0.9);
-            transition: background 0.3s;
+            font-size: 1.3rem;         /* larger base for paragraphs */
         }
 
         .refreshed-message p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            margin: 20px 0;
+            font-size: 1.35rem;        /* noticeably bigger */
+            line-height: 1.75;
+            margin: 26px 0;
             font-weight: 430;
             color: #1f1720;
         }
 
         .refreshed-message p:first-child {
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
         .refreshed-message p:last-child {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
+        /* signature area – bigger, only text */
         .modern-signature {
             font-style: normal;
             display: flex;
             align-items: baseline;
             justify-content: space-between;
             border-top: 2px solid rgba(150, 70, 90, 0.4);
-            padding-top: 24px;
-            margin-top: 22px;
-            font-size: 1.7rem;
+            padding-top: 28px;
+            margin-top: 28px;
+            font-size: 2rem;           /* large signature */
             font-weight: 450;
-        }
-
-        .signature-emoji {
-            font-size: 2.2rem;
-            filter: drop-shadow(0 2px 4px #dc889b);
         }
 
         .signature-name {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .signature-name strong {
-            font-weight: 680;
-            font-size: 1.9rem;
+            font-weight: 700;
+            font-size: 2.2rem;          /* extra emphasis */
             background: linear-gradient(135deg, #3d1f2b, #691c34);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
+        /* anniversary badge - only text */
         .day-badge {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(5px);
             border-radius: 90px;
-            padding: 12px 22px;
-            font-size: 1.2rem;
+            padding: 16px 28px;
+            font-size: 1.4rem;           /* bigger */
             font-weight: 520;
             text-align: center;
-            margin: 12px 0 18px;
-            border: 1.5px solid white;
+            margin: 24px 0 22px;
+            border: 1.8px solid white;
             color: #30131f;
         }
 
+        /* return button – bigger, only text */
         .modern-return {
             color: #2f1421;
-            font-size: 1.1rem;
-            margin-top: 22px;
+            font-size: 1.4rem;            /* larger */
             text-decoration: none;
-            border: 1.5px solid rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.28);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
-            padding: 12px 28px;
+            padding: 16px 34px;
             border-radius: 60px;
             display: inline-block;
-            font-weight: 550;
+            font-weight: 580;
             transition: all 0.15s;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(150, 60, 80, 0.3);
+            box-shadow: 0 4px 8px rgba(150, 60, 80, 0.3);
+            margin-top: 20px;
+            width: auto;
+            text-align: center;
         }
 
         .modern-return:active {
@@ -214,107 +187,81 @@
             box-shadow: none;
         }
 
+        /* tiny footer - only text, barely visible */
         .tiny-touch {
             opacity: 0.7;
-            font-size: 0.9rem;
-            margin-top: 8px;
+            font-size: 1rem;
+            margin-top: 12px;
             color: #331a25;
+            text-align: center;
         }
+
+        /* no emoji row, no icon decorations */
     </style>
 </head>
 <body>
-    <div class="modern-note">
-        <!-- playful minimal icons -->
-        <div class="icon-floating">
-            <span style="animation-delay: 0s;">🩰</span>
-            <span style="animation-delay: 0.2s;">🐇</span>
-            <span style="animation-delay: 0.4s;">☕️</span>
-            <span style="animation-delay: 0.6s;">🌸</span>
-        </div>
+    <div class="big-text-card">
+        <!-- pure text header – no emoji -->
+        <div class="soft-tag">for us · 15 months</div>
 
-        <!-- fresh tagline instead of POP -->
-        <div class="soft-tag">✧  for us  ✧</div>
-        <div class="sparkle-strip">✨ 🩷 ✨ 🩷 ✨</div>
+        <!-- text separator (just dashes) -->
+        <div class="sparkle-strip">🞄 🞄 🞄 🞄 🞄</div>
 
-        <!-- main love card – modernized message -->
+        <!-- main love card – text only, larger paragraphs -->
         <div class="fresh-love-card">
-            <h2>
-                <span>💌</span> dearest you
-            </h2>
+            <h2>to my love</h2>
             
             <div class="refreshed-message">
                 <p>
-                    <strong>15 months</strong> of <em>us</em> — and my thumb still hesitates 
-                    before opening your messages, because i know they’ll make me smile.  
-                    Every candid snapshot, every late-night voice note, every tiny 
-                    fight and huge laugh — it’s all part of our messy, beautiful story.
+                    15 months of us — and my thumb still hesitates before opening your messages, 
+                    because I know they'll make me smile. Every candid snapshot, every late-night 
+                    voice note, every tiny fight and huge laugh — it's all part of our messy, 
+                    beautiful story.
                 </p>
                 <p>
-                    i’m soft for the way you hum in the morning, the way you 
-                    steal the duvet and then give me extra covers, the way you 
-                    just *know* when i need a stupid pun or a long hug.  
-                    You’re my favourite notification, my calm in loud moments, 
+                    I'm soft for the way you hum in the morning, the way you steal the duvet 
+                    and then give me extra covers, the way you just know when I need a stupid pun 
+                    or a long hug. You're my favourite notification, my calm in loud moments, 
                     and the most comforting part of my routine.
                 </p>
                 <p>
-                    Thank you for 15 months of learning each other, 
-                    for holding my hand (even when virtual), and for being 
-                    exactly the weird, warm human you are.
+                    Thank you for 15 months of learning each other, for holding my hand 
+                    (even when virtual), and for being exactly the weird, warm human you are.
                 </p>
             </div>
 
-            <!-- fresh signature style -->
+            <!-- signature without emoji, only text -->
             <div class="modern-signature">
-                <span class="signature-emoji">🫶</span>
+                <span style="opacity:0.8; font-size:1.8rem;">always,</span>
                 <div class="signature-name">
-                    <span style="font-size: 1.2rem;">always,</span>
                     <strong>your person</strong>
                 </div>
             </div>
         </div>
 
-        <!-- soft anniversary badge -->
-        <div class="day-badge">1 year + 3 months · still glowing 💭</div>
+        <!-- text-only anniversary badge -->
+        <div class="day-badge">one year + three months · still glowing</div>
 
-        <!-- elegant return button -->
+        <!-- pure text back button -->
         <div class="modern-return" id="backBtn">↺  back to our box</div>
-        <div class="tiny-touch">tap to go back</div>
+        <div class="tiny-touch">tap to return</div>
     </div>
 
     <script>
         (function() {
-            // smooth back navigation (index.html as home)
+            // back navigation (index.html as main box)
             const backButton = document.getElementById('backBtn');
             backButton.addEventListener('click', function(e) {
                 e.stopPropagation();
-                window.location.href = 'index.html';   // returns to main box
+                window.location.href = 'index.html';
             });
 
-            // subtle personalization: you can replace "your person" with a nickname
-            // example: change "your person" to "your boy" / "your girl"
-            const nameStrong = document.querySelector('.signature-name strong');
-            if (nameStrong) {
-                // if you want to set a custom pet name, uncomment and edit:
-                // nameStrong.innerText = 'your stardust';  
-                // (feel free to customize)
-            }
-
-            // adjust animation delays on floating icons for variation
-            const floatingIcons = document.querySelectorAll('.icon-floating span');
-            floatingIcons.forEach((icon, idx) => {
-                icon.style.animationDelay = `${idx * 0.2}s`;
-            });
-
-            // optional: tiny hover effect on the message block
-            const msgBlock = document.querySelector('.refreshed-message');
-            if (msgBlock) {
-                msgBlock.addEventListener('mouseenter', () => {
-                    msgBlock.style.background = 'rgba(255, 235, 240, 0.7)';
-                });
-                msgBlock.addEventListener('mouseleave', () => {
-                    msgBlock.style.background = 'rgba(255, 245, 245, 0.5)';
-                });
-            }
+            // optional: adjust nothing else – pure text, no emojis.
+            // you can customize the signature name if you want (uncomment below)
+            // const nameStrong = document.querySelector('.signature-name strong');
+            // if (nameStrong) {
+            //     nameStrong.innerText = 'your nickname';
+            // }
         })();
     </script>
 </body>
