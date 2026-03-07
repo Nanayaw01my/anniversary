@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>love note · big & text only</title>
+    <title>happy one year ❤️</title>
     <style>
         * {
             margin: 0;
@@ -14,253 +14,272 @@
 
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at 30% 30%, #fdc1d3, #f9a8bb 70%);
-            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: linear-gradient(165deg, #feadc0 0%, #ffd9e2 100%);
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 14px;
         }
 
-        /* much bigger card with generous padding */
-        .big-text-card {
+        /* main card – dreamy, soft, mobile-first */
+        .anniversary-card {
             width: 100%;
-            max-width: 680px;        /* wider */
-            background: rgba(255, 245, 245, 0.2);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 2px solid rgba(255, 255, 255, 0.75);
-            border-radius: 56px 20px 56px 20px;
-            box-shadow: 0 40px 60px -12px rgba(160, 50, 80, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.9);
-            padding: 48px 40px;       /* spacious interior */
-            color: #2d1f22;
-            animation: appear 0.5s ease-out;
+            max-width: 480px;
+            background: rgba(255, 245, 250, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 56px 24px 56px 24px;
+            box-shadow: 0 35px 60px -10px rgba(180, 50, 90, 0.4), inset 0 2px 12px rgba(255, 255, 255, 0.9);
+            padding: 32px 22px 40px;
+            color: #2d1220;
+            animation: gentleRise 0.7s cubic-bezier(0.10, 0.80, 0.25, 1);
         }
 
-        @keyframes appear {
-            0% { opacity: 0; transform: translateY(18px) scale(0.97); }
+        @keyframes gentleRise {
+            0% { opacity: 0; transform: translateY(20px) scale(0.98); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* text elements only – no emoji decorations */
-        .soft-tag {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
-            border-radius: 60px;
-            padding: 14px 32px;
-            width: fit-content;
-            margin: 0 auto 24px auto;  /* centered */
-            font-weight: 540;
-            font-size: 1.6rem;
-            color: #3d1e2c;
-            border: 1.8px solid white;
-            box-shadow: 0 3px 0 #b38694;
-            letter-spacing: 0.5px;
-            text-align: center;
+        /* floating heart accents – minimal, pretty */
+        .heart-float-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 3.2rem;
+            filter: drop-shadow(0 10px 10px #d46988);
+            margin: 8px 0 14px;
+            opacity: 0.9;
         }
 
-        /* simple text separator */
-        .sparkle-strip {
-            font-size: 2rem;
+        .heart-float-row span {
+            display: inline-block;
+            animation: bobHeart 2.4s infinite alternate ease-in-out;
+            transform-origin: center;
+        }
+
+        @keyframes bobHeart {
+            0% { transform: translateY(0px) rotate(-5deg); }
+            100% { transform: translateY(-14px) rotate(5deg); }
+        }
+
+        /* decorative line */
+        .sparkle-dash {
+            font-size: 2.4rem;
             letter-spacing: 14px;
             text-align: center;
-            color: #d46b86;
+            color: #f08caa;
+            margin: 10px 0 8px;
             font-weight: 300;
-            margin: 12px 0 32px 0;
-            opacity: 0.8;
         }
 
-        /* main love card – larger and cleaner */
-        .fresh-love-card {
-            background: rgba(253, 240, 243, 0.6);
-            backdrop-filter: blur(14px);
-            border: 2px solid rgba(255, 255, 255, 0.9);
+        /* main letter card – holds your message */
+        .message-card {
+            background: rgba(255, 240, 245, 0.55);
+            backdrop-filter: blur(16px);
+            border: 2.5px solid rgba(255, 255, 255, 0.9);
             border-radius: 48px 12px 48px 12px;
-            padding: 36px 32px;
-            margin: 24px 0 20px;
-            box-shadow: 0 20px 0 #b27c8b, 0 30px 40px -16px #ac6279;
-            color: #1f1218;
+            padding: 32px 24px;
+            margin: 24px 0 28px;
+            box-shadow: 0 20px 0 #b27c8b, 0 28px 34px -14px #ac6279;
+            color: #1f1420;
         }
 
-        .fresh-love-card h2 {
-            font-size: 2.8rem;        /* larger heading */
-            font-weight: 630;
-            letter-spacing: -0.5px;
-            border-bottom: 2px dashed rgba(120, 50, 70, 0.3);
-            padding-bottom: 22px;
-            margin-bottom: 26px;
-            text-align: center;        /* centered text only */
+        .message-card h1 {
+            font-size: 2.2rem;
+            font-weight: 640;
+            text-align: center;
+            color: #391625;
+            border-bottom: 2px dashed rgba(180, 80, 110, 0.4);
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+            letter-spacing: -0.2px;
+            line-height: 1.3;
         }
 
-        /* message block with bigger text */
-        .refreshed-message {
-            background: rgba(255, 245, 245, 0.5);
-            border-radius: 40px 8px 40px 8px;
-            padding: 28px 26px;
-            margin: 26px 0;
-            border: 1px solid rgba(255,255,255,0.9);
-            font-size: 1.3rem;         /* larger base for paragraphs */
-        }
-
-        .refreshed-message p {
-            font-size: 1.35rem;        /* noticeably bigger */
+        /* your beautiful message */
+        .love-letter p {
+            font-size: 1.2rem;
             line-height: 1.75;
-            margin: 26px 0;
+            margin: 24px 0;
             font-weight: 430;
-            color: #1f1720;
+            color: #26121b;
         }
 
-        .refreshed-message p:first-child {
+        .love-letter p:first-child {
             margin-top: 6px;
         }
 
-        .refreshed-message p:last-child {
-            margin-bottom: 6px;
+        .love-letter p:last-of-type {
+            margin-bottom: 12px;
         }
 
-        /* signature area – bigger, only text */
-        .modern-signature {
-            font-style: normal;
+        .signature-block {
             display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            border-top: 2px solid rgba(150, 70, 90, 0.4);
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+            border-top: 2px solid rgba(150, 60, 80, 0.3);
             padding-top: 28px;
-            margin-top: 28px;
-            font-size: 2rem;           /* large signature */
-            font-weight: 450;
+            margin-top: 22px;
+            font-size: 1.8rem;
+            font-weight: 460;
         }
 
-        .signature-name {
+        .signature-block span {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px #e08ca5);
+        }
+
+        .signature-block .signature-text {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            line-height: 1.4;
+            line-height: 1.3;
+            font-size: 1.5rem;
         }
 
-        .signature-name strong {
+        .signature-text strong {
+            font-size: 2rem;
             font-weight: 700;
-            font-size: 2.2rem;          /* extra emphasis */
-            background: linear-gradient(135deg, #3d1f2b, #691c34);
+            background: linear-gradient(135deg, #421e2d, #80213f);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        /* anniversary badge - only text */
-        .day-badge {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(5px);
-            border-radius: 90px;
-            padding: 16px 28px;
-            font-size: 1.4rem;           /* bigger */
-            font-weight: 520;
+        /* subtle anniversary badge */
+        .year-badge {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(6px);
+            border-radius: 80px;
+            padding: 14px 24px;
+            font-size: 1.25rem;
+            font-weight: 540;
             text-align: center;
-            margin: 24px 0 22px;
+            margin: 16px 0 18px;
             border: 1.8px solid white;
-            color: #30131f;
+            color: #33111f;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* return button – bigger, only text */
-        .modern-return {
-            color: #2f1421;
-            font-size: 1.4rem;            /* larger */
+        /* back button – big & tappable */
+        .home-btn {
+            color: #2c1020;
+            font-size: 1.3rem;
             text-decoration: none;
             border: 2px solid rgba(255, 255, 255, 0.8);
             background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             padding: 16px 34px;
             border-radius: 60px;
             display: inline-block;
-            font-weight: 580;
+            font-weight: 600;
             transition: all 0.15s;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(150, 60, 80, 0.3);
-            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(170, 70, 100, 0.3);
+            margin-top: 18px;
             width: auto;
             text-align: center;
+            letter-spacing: 0.4px;
+            border: 2px solid white;
         }
 
-        .modern-return:active {
-            background: rgba(255, 255, 255, 0.5);
+        .home-btn:active {
+            background: rgba(255, 255, 255, 0.6);
             transform: scale(0.96);
-            box-shadow: none;
+            box-shadow: 0 2px 4px rgba(140, 40, 70, 0.3);
         }
 
-        /* tiny footer - only text, barely visible */
-        .tiny-touch {
+        .footer-note {
             opacity: 0.7;
             font-size: 1rem;
-            margin-top: 12px;
-            color: #331a25;
+            margin-top: 16px;
+            color: #381d29;
             text-align: center;
         }
-
-        /* no emoji row, no icon decorations */
     </style>
 </head>
 <body>
-    <div class="big-text-card">
-        <!-- pure text header – no emoji -->
-        <div class="soft-tag">for us · 15 months</div>
+    <div class="anniversary-card">
+        <!-- floating hearts (just a few, soft) -->
+        <div class="heart-float-row">
+            <span style="animation-delay: 0s;">❤️</span>
+            <span style="animation-delay: 0.2s;">🌸</span>
+            <span style="animation-delay: 0.4s;">❤️</span>
+            <span style="animation-delay: 0.6s;">✨</span>
+            <span style="animation-delay: 0.8s;">❤️</span>
+        </div>
 
-        <!-- text separator (just dashes) -->
-        <div class="sparkle-strip">🞄 🞄 🞄 🞄 🞄</div>
+        <div class="sparkle-dash">✧  ✧  ✧</div>
 
-        <!-- main love card – text only, larger paragraphs -->
-        <div class="fresh-love-card">
-            <h2>to my love</h2>
+        <!-- main message area – your heartfelt words -->
+        <div class="message-card">
+            <h1>Happy One Year, my love ❤️</h1>
             
-            <div class="refreshed-message">
+            <div class="love-letter">
                 <p>
-                    15 months of us — and my thumb still hesitates before opening your messages, 
-                    because I know they'll make me smile. Every candid snapshot, every late-night 
-                    voice note, every tiny fight and huge laugh — it's all part of our messy, 
-                    beautiful story.
+                    I can’t believe it’s already been a whole year since we started this journey together. 
+                    This year with you has been one of the most meaningful and beautiful chapters of my life. 
+                    You’ve brought so much joy, comfort, laughter, and love into my world.
                 </p>
                 <p>
-                    I'm soft for the way you hum in the morning, the way you steal the duvet 
-                    and then give me extra covers, the way you just know when I need a stupid pun 
-                    or a long hug. You're my favourite notification, my calm in loud moments, 
-                    and the most comforting part of my routine.
+                    Thank you for being my safe place, my biggest supporter, and my best friend. 
+                    Thank you for the little things you do, the way you understand me, the way you care, 
+                    and the way you love me so effortlessly. Being with you has taught me what real love feels like.
                 </p>
                 <p>
-                    Thank you for 15 months of learning each other, for holding my hand 
-                    (even when virtual), and for being exactly the weird, warm human you are.
+                    I’m so proud of us and everything we’ve grown through together. 
+                    If this is what one year feels like, I can’t wait for all the years ahead. 
+                    No matter where life takes us, I promise to keep choosing you, loving you, and building with you.
+                </p>
+                <p>
+                    You mean more to me than I can ever fully put into words. 
+                    Happy anniversary, my heart. 💕
                 </p>
             </div>
 
-            <!-- signature without emoji, only text -->
-            <div class="modern-signature">
-                <span style="opacity:0.8; font-size:1.8rem;">always,</span>
-                <div class="signature-name">
-                    <strong>your person</strong>
+            <!-- signature with a little elegance -->
+            <div class="signature-block">
+                <span>💗</span>
+                <div class="signature-text">
+                    <span style="font-size:1.2rem;">always yours,</span>
+                    <strong>your love</strong>
                 </div>
             </div>
         </div>
 
-        <!-- text-only anniversary badge -->
-        <div class="day-badge">one year + three months · still glowing</div>
+        <!-- delicate badge -->
+        <div class="year-badge">celebrating 1 year · 03•07</div>
 
-        <!-- pure text back button -->
-        <div class="modern-return" id="backBtn">↺  back to our box</div>
-        <div class="tiny-touch">tap to return</div>
+        <!-- back button (index) – easy to tap -->
+        <div class="home-btn" id="backBtn">↺  back to our box</div>
+        <div class="footer-note">tap to return</div>
     </div>
 
     <script>
         (function() {
-            // back navigation (index.html as main box)
-            const backButton = document.getElementById('backBtn');
-            backButton.addEventListener('click', function(e) {
+            // smooth return to main page (index.html)
+            const backBtn = document.getElementById('backBtn');
+            backBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                window.location.href = 'index.html';
+                window.location.href = 'index.html';   // goes back to box
             });
 
-            // optional: adjust nothing else – pure text, no emojis.
-            // you can customize the signature name if you want (uncomment below)
-            // const nameStrong = document.querySelector('.signature-name strong');
-            // if (nameStrong) {
-            //     nameStrong.innerText = 'your nickname';
+            // vary floating delays for each heart
+            const hearts = document.querySelectorAll('.heart-float-row span');
+            hearts.forEach((el, i) => {
+                el.style.animationDelay = `${i * 0.2}s`;
+            });
+
+            // optional: personalize the signature (change "your love" if you want)
+            // const signatureStrong = document.querySelector('.signature-text strong');
+            // if (signatureStrong) {
+            //     signatureStrong.innerText = 'your special name';
             // }
         })();
     </script>
