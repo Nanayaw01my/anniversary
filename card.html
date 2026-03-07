@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>happy one year ❤️</title>
+    <title>happy one year · balloons & celebration</title>
     <style>
         * {
             margin: 0;
@@ -20,9 +20,38 @@
             align-items: center;
             justify-content: center;
             padding: 14px;
+            position: relative;
         }
 
-        /* main card – dreamy, soft, mobile-first */
+        /* floating confetti pieces (absolute, behind card) */
+        .confetti-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 12px;
+            height: 20px;
+            background: rgba(255, 215, 140, 0.7);
+            border-radius: 6px;
+            transform: rotate(25deg);
+            animation: confettiFall 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        /* main card – dreamy, soft, mobile-first, with slight overlap */
         .anniversary-card {
             width: 100%;
             max-width: 480px;
@@ -35,6 +64,9 @@
             padding: 32px 22px 40px;
             color: #2d1220;
             animation: gentleRise 0.7s cubic-bezier(0.10, 0.80, 0.25, 1);
+            position: relative;
+            z-index: 10;
+            border: 3px solid rgba(255, 255, 255, 0.8);
         }
 
         @keyframes gentleRise {
@@ -42,30 +74,42 @@
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* floating heart accents – minimal, pretty */
-        .heart-float-row {
+        /* BALLOON ROW – POP style! */
+        .balloon-row {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 18px;
             flex-wrap: wrap;
-            font-size: 3.2rem;
-            filter: drop-shadow(0 10px 10px #d46988);
-            margin: 8px 0 14px;
-            opacity: 0.9;
+            font-size: 3.8rem;
+            filter: drop-shadow(0 14px 12px #d45a82);
+            margin: 8px 0 12px;
+            position: relative;
+            z-index: 15;
+            cursor: pointer;
         }
 
-        .heart-float-row span {
+        .balloon-row span {
             display: inline-block;
-            animation: bobHeart 2.4s infinite alternate ease-in-out;
-            transform-origin: center;
+            animation: floatBalloon 2s infinite alternate ease-in-out;
+            transform-origin: bottom;
+            transition: transform 0.2s, opacity 0.2s;
+            user-select: none;
         }
 
-        @keyframes bobHeart {
-            0% { transform: translateY(0px) rotate(-5deg); }
-            100% { transform: translateY(-14px) rotate(5deg); }
+        @keyframes floatBalloon {
+            0% { transform: translateY(0px) rotate(-4deg); }
+            100% { transform: translateY(-16px) rotate(5deg); }
         }
 
-        /* decorative line */
+        /* pop animation class (added via js) */
+        .balloon-pop {
+            transform: scale(1.8) !important;
+            opacity: 0 !important;
+            transition: transform 0.2s cubic-bezier(0.3, 1.2, 0.8, 1.2), opacity 0.15s !important;
+            pointer-events: none;
+        }
+
+        /* sparkle dash */
         .sparkle-dash {
             font-size: 2.4rem;
             letter-spacing: 14px;
@@ -167,7 +211,7 @@
             margin-right: auto;
         }
 
-        /* back button – big & tappable */
+        /* back button */
         .home-btn {
             color: #2c1020;
             font-size: 1.3rem;
@@ -185,8 +229,9 @@
             margin-top: 18px;
             width: auto;
             text-align: center;
-            letter-spacing: 0.4px;
             border: 2px solid white;
+            z-index: 20;
+            position: relative;
         }
 
         .home-btn:active {
@@ -202,20 +247,34 @@
             color: #381d29;
             text-align: center;
         }
+
+        .pop-message {
+            text-align: center;
+            font-size: 1.3rem;
+            margin: 5px 0 0;
+            color: #9f3a5a;
+            font-weight: 520;
+            background: rgba(255,255,240,0.4);
+            padding: 6px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+            transition: opacity 0.3s;
+        }
     </style>
 </head>
 <body>
-    <div class="anniversary-card">
-        <!-- floating hearts (just a few, soft) -->
-        <div class="heart-float-row">
-            <span style="animation-delay: 0s;">❤️</span>
-            <span style="animation-delay: 0.2s;">🌸</span>
-            <span style="animation-delay: 0.4s;">❤️</span>
-            <span style="animation-delay: 0.6s;">✨</span>
-            <span style="animation-delay: 0.8s;">❤️</span>
-        </div>
+    <!-- floating background confetti (constant celebration) -->
+    <div class="confetti-bg" id="confettiBg"></div>
 
-        <div class="sparkle-dash">✧  ✧  ✧</div>
+    <div class="anniversary-card">
+        <!-- BALLOONS with POP! interaction -->
+        <div class="balloon-row" id="balloonRow">
+            <span>🎈</span><span>🎈</span><span>🎈</span><span>🎈</span><span>🎈</span>
+        </div>
+        <div class="pop-message" id="popFeedback">👆 tap balloons to pop!</div>
+
+        <div class="sparkle-dash">✨ 🎊 ✨ 🎊 ✨</div>
 
         <!-- main message area – your heartfelt words -->
         <div class="message-card">
@@ -248,7 +307,7 @@
                 <span>💗</span>
                 <div class="signature-text">
                     <span style="font-size:1.2rem;">always yours,</span>
-                    <strong>Sr. Samuel</strong>
+                    <strong>your love</strong>
                 </div>
             </div>
         </div>
@@ -256,33 +315,105 @@
         <!-- delicate badge -->
         <div class="year-badge">celebrating 1 year · 03•07</div>
 
-        <!-- back button (index) – easy to tap -->
+        <!-- back button (index) -->
         <div class="home-btn" id="backBtn">↺  back to our box</div>
         <div class="footer-note">tap to return</div>
     </div>
 
     <script>
         (function() {
-            // smooth return to main page (index.html)
+            // ---- BACKGROUND CONFETTI (extra celebration) ----
+            const confettiContainer = document.getElementById('confettiBg');
+            for (let i = 0; i < 35; i++) {
+                const conf = document.createElement('div');
+                conf.className = 'confetti-piece';
+                // random positions, colors, sizes, delays
+                conf.style.left = Math.random() * 100 + '%';
+                conf.style.top = Math.random() * 100 + '%';
+                conf.style.animationDelay = Math.random() * 8 + 's';
+                conf.style.animationDuration = 5 + Math.random() * 8 + 's';
+                conf.style.background = `hsl(${Math.random() * 30 + 340}, 80%, 70%)`; // pink/red/yellow tones
+                conf.style.width = 6 + Math.random() * 14 + 'px';
+                conf.style.height = 12 + Math.random() * 18 + 'px';
+                conf.style.opacity = 0.3 + Math.random() * 0.5;
+                confettiContainer.appendChild(conf);
+            }
+
+            // ---- BALLOON POPPING FUN ----
+            const balloonRow = document.getElementById('balloonRow');
+            const balloons = balloonRow.querySelectorAll('span');
+            const popFeedback = document.getElementById('popFeedback');
+            let poppedCount = 0;
+
+            balloons.forEach(balloon => {
+                balloon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    // prevent double-popping same balloon
+                    if (balloon.classList.contains('balloon-pop')) return;
+
+                    // add pop animation
+                    balloon.classList.add('balloon-pop');
+
+                    // increment pop counter
+                    poppedCount++;
+
+                    // update feedback message with fun
+                    if (poppedCount === 1) {
+                        popFeedback.innerText = '💥 POP! one down!';
+                    } else if (poppedCount === 2) {
+                        popFeedback.innerText = '🎉 two balloons popped!';
+                    } else if (poppedCount === 3) {
+                        popFeedback.innerText = '🎈 three! celebratory pop!';
+                    } else if (poppedCount === 4) {
+                        popFeedback.innerText = '✨ almost all gone!';
+                    } else if (poppedCount === 5) {
+                        popFeedback.innerText = '💖 ALL BALLOONS POPPED! HAPPY YEAR! 💖';
+                        // add an extra confetti burst (create some quick floating pieces)
+                        for (let i = 0; i < 12; i++) {
+                            const burstConf = document.createElement('div');
+                            burstConf.className = 'confetti-piece';
+                            burstConf.style.left = '40%';
+                            burstConf.style.top = '20%';
+                            burstConf.style.animation = 'confettiFall 3s linear forwards';
+                            burstConf.style.background = `hsl(${Math.random()*60 + 320}, 90%, 70%)`;
+                            burstConf.style.width = '10px';
+                            burstConf.style.height = '18px';
+                            burstConf.style.opacity = 1;
+                            confettiContainer.appendChild(burstConf);
+                            // remove after animation to avoid clutter
+                            setTimeout(() => burstConf.remove(), 3000);
+                        }
+                    }
+
+                    // after pop, remove the balloon from row (optional)
+                    setTimeout(() => {
+                        balloon.style.display = 'none';  // disappear after pop
+                    }, 150);
+                });
+            });
+
+            // reset balloons if you want (double tap row to reset - hidden feature)
+            balloonRow.addEventListener('dblclick', function() {
+                balloons.forEach(b => {
+                    b.classList.remove('balloon-pop');
+                    b.style.display = 'inline-block';
+                });
+                poppedCount = 0;
+                popFeedback.innerText = '👆 tap balloons to pop!';
+            });
+
+            // ---- BACK BUTN ----
             const backBtn = document.getElementById('backBtn');
             backBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                window.location.href = 'index.html';   // goes back to box
+                window.location.href = 'index.html';
             });
 
-            // vary floating delays for each heart
-            const hearts = document.querySelectorAll('.heart-float-row span');
-            hearts.forEach((el, i) => {
-                el.style.animationDelay = `${i * 0.2}s`;
+            // vary balloon float delays
+            balloons.forEach((b, i) => {
+                b.style.animationDelay = `${i * 0.15}s`;
             });
-
-            // optional: personalize the signature (change "your love" if you want)
-            // const signatureStrong = document.querySelector('.signature-text strong');
-            // if (signatureStrong) {
-            //     signatureStrong.innerText = 'your special name';
-            // }
         })();
     </script>
 </body>
 </html>
-
